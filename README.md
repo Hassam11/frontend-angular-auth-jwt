@@ -1,27 +1,86 @@
-# Frontend
+# Sistema de inicio de sesión angular con autenticación JWT
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Este proyecto es una implementación de un sistema de inicio de sesión en Angular utilizando JWT (JSON Web Tokens) para la autenticación. El frontend se comunica con una API RESTful para validar las credenciales del usuario y almacenar el token de acceso en el almacenamiento local (localStorage) para mantener la sesión activa.
 
-## Development server
+## Estructura del Proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+El proyecto está organizado de la siguiente manera:
 
-## Code scaffolding
+```
+src/
+  app/
+    app-routing.module.ts
+│   app.component.css
+│   app.component.html
+│   app.component.spec.ts
+│   app.component.ts
+│   app.module.ts
+│
+├───components
+│   ├───dashboard
+│   │       dashboard.component.css
+│   │       dashboard.component.html
+│   │       dashboard.component.spec.ts
+│   │       dashboard.component.ts
+│   │
+│   └───login
+│           login.component.css
+│           login.component.html
+│           login.component.spec.ts
+│           login.component.ts
+│
+├───guards
+│       auth.guard.spec.ts
+│       auth.guard.ts
+│       login.guard.spec.ts
+│       login.guard.ts
+│
+├───interceptors
+│       auth.interceptor.spec.ts
+│       auth.interceptor.ts
+│
+├───models
+│       login.ts
+│
+└───services
+        auth.service.spec.ts
+        auth.service.ts
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionalidades
 
-## Build
+- **Inicio de sesión con JWT**: Los usuarios pueden iniciar sesión proporcionando su correo electrónico y contraseña. El backend valida las credenciales y devuelve un token JWT que se guarda en el almacenamiento local.
+- **Interceptor para solicitudes autenticadas**: Un interceptor de HTTP asegura que el token JWT se adjunte a todas las solicitudes protegidas.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Redirección y manejo de errores**: Si las credenciales son correctas, el usuario es redirigido a la página principal. Si hay un error, se muestra un mensaje de error en el formulario.
 
-## Running unit tests
+## Tecnologías Utilizadas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Angular**: Framework frontend para construir la interfaz de usuario interactiva.
+- **RxJS**: Para manejar operaciones asíncronas en Angular.
 
-## Running end-to-end tests
+## Instrucciones de Instalación
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clona el repositorio:
 
-## Further help
+   ```bash
+   https://github.com/Hassam11/frontend-angular-auth-jwt
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Navega al directorio del proyecto:
+
+   ```bash
+   cd frontend-angular-auth-jwt
+   ```
+
+3. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+4. Ejecuta el proyecto:
+
+   ```bash
+   ng serve
+   ```
